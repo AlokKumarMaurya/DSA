@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "875676004794",
+    "project_id": "chat-application-ffd8c",
+    "storage_bucket": "chat-application-ffd8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875676004794:android:1a5519edee68788450ad83",
+        "android_client_info": {
+          "package_name": "com.alok.chat.chat_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkx1pLn4lNGWBq5mL97ycb_rqtmAYbe1o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

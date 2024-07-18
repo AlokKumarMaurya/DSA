@@ -1,0 +1,22 @@
+name: firebase_service
+description: "Package to store all firebase services at this directory"
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  firebase_core: ^3.2.0
+  firebase_database: ^11.0.3
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+

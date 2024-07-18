@@ -1,0 +1,28 @@
+name: chat_module
+description: "A new Flutter package project."
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  network_service:
+    path: ../../network_service
+  custom_widgets:
+    path: ../../custom_widgets
+  firebase_service:
+    path: ../../firebase_service
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+
+flutter:
+
