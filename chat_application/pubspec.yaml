@@ -22,6 +22,10 @@ dependencies:
     path: ./packages/firebase_service
   chat_module:
     path: ./packages/modules/chat
+  admin_user:
+    path: ./packages/modules/admin_user
+  auth:
+    path: ./packages/modules/auth
 
 dev_dependencies:
   flutter_test:
