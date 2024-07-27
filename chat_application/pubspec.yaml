@@ -26,6 +26,8 @@ dependencies:
     path: ./packages/modules/admin_user
   auth:
     path: ./packages/modules/auth
+  local_storage:
+    path: ./packages/local_storage
 
 dev_dependencies:
   flutter_test:

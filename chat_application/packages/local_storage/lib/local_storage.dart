@@ -1,7 +1,4 @@
 library local_storage;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'get_storage/get_storage.dart';
+export 'package:get_storage/get_storage.dart';

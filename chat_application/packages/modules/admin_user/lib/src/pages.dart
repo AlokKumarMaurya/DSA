@@ -5,13 +5,13 @@ import 'package:network_service/network_service.dart';
 class AdminRoutes {
   static final adminPages = [
     GetPage(
-        name: AdminRouteName.demoPage,
+        name: _AdminRouteName.demoPage,
         page: () => const DemoUi(),
         binding: BindingsBuilder(() => Get.lazyPut(() => DemoController())))
   ];
 }
 
 
-class AdminRouteName{
+class _AdminRouteName{
   static const String demoPage="/demoPage";
 }

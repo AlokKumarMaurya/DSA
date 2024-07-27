@@ -1,10 +1,12 @@
 import 'package:chat_application/utils/dependency_injection/inject_dependency.dart';
 import 'package:chat_application/utils/getX_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:local_storage/local_storage.dart';
 
 import 'utils/class_importer.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
   InjectDependency();
   runApp(const MyApp());
 }
@@ -65,6 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
+    AppLocalStorage().deleteStorage();
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
