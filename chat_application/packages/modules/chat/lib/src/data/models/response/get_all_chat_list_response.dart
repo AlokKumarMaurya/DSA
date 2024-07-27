@@ -1,88 +1,36 @@
-// To parse this JSON data, do
-//
-//     final getAllChatListResponse = getAllChatListResponseFromJson(jsonString);
-
-import 'dart:convert';
-
-import 'package:chat_module/src/domain/entity/chat_list_entity/get_all_chat_list_entity.dart';
 import 'package:network_service/network_service.dart';
-
-List<GetAllChatListResponse> getAllChatListResponseFromJson(String str) =>
-    List<GetAllChatListResponse>.from(
-        json.decode(str).map((x) => GetAllChatListResponse.fromJson(x)));
-
-String getAllChatListResponseToJson(List<GetAllChatListResponse> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
-class GetAllChatListResponse extends BaseResponse {
-  final int age;
+class GetAllChatListResponse {
   final String lastMessage;
-  final List<Chat> chats;
-  final String email;
-  final String name;
-  final String profilePhoto;
+  final int lastMessageTime;
+  final SenderDetail senderDetail;
 
   GetAllChatListResponse({
-    required this.chats,
-    required this.age,
-    required this.email,
-    required this.name,
-    required this.profilePhoto,
+    required this.senderDetail,
+    required this.lastMessageTime,
     required this.lastMessage,
   });
 
-  factory GetAllChatListResponse.fromJson(Map<String, dynamic> json) =>
+  GetAllChatListResponse copyWith({
+    String? lastMessage,
+    SenderDetail? senderDetail,
+    int? lastMessageTime,
+  }) =>
       GetAllChatListResponse(
-        chats: List<Chat>.from(json["chats"].map((x) => Chat.fromJson(x))),
-        age: json["age"],
-        lastMessage: List<Chat>.from(json["chats"].map((x) => Chat.fromJson(x)))
-            .last
-            .message,
-        email: json["email"],
-        name: json["name"],
-        profilePhoto: json["profile_photo"],
+        lastMessageTime: lastMessageTime ?? this.lastMessageTime,
+        senderDetail: senderDetail ?? this.senderDetail,
+        lastMessage: lastMessage ?? this.lastMessage,
       );
 
-  Map<String, dynamic> toJson() => {
-        "chats": List<dynamic>.from(chats.map((x) => x.toJson())),
-        "age": age,
-        "email": email,
-        "name": name,
-        "profile_photo": profilePhoto,
-      };
-
-  @override
-  toEntity(dynamic str) {
-    return GetAllChatListEntity(
-        message: "Chat List Get Successful",
-        chatList: getAllChatListResponseFromJson(str)
-            .map(
-              (e) => AllChatListEntity(
-                name: e.name,
-                profileUrl: e.profilePhoto,
-                lastChat: e.chats.last.message,
-              ),
-            )
-            .toList());
-  }
-}
-
-class Chat {
-  final String message;
-  final int time;
-
-  Chat({
-    required this.message,
-    required this.time,
-  });
-
-  factory Chat.fromJson(Map<String, dynamic> json) => Chat(
-        message: json["message"]!,
-        time: json["time"],
+  factory GetAllChatListResponse.fromJson(Map<Object?, dynamic> json) =>
+      GetAllChatListResponse(
+        lastMessageTime:
+            List<Message>.from(json["messages"].map((x) => Message.fromJson(x)))
+                .last
+                .time,
+        senderDetail: SenderDetail.fromJson(json["Sender-Detail"]),
+        lastMessage:
+            List<Message>.from(json["messages"].map((x) => Message.fromJson(x)))
+                .last
+                .msg,
       );
-
-  Map<String, dynamic> toJson() => {
-        "message": message,
-        "time": time,
-      };
 }

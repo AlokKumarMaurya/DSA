@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  cloud_firestore: ^5.1.0
   network_service:
     path: ../../network_service
   custom_widgets:
@@ -17,6 +18,8 @@ dependencies:
   firebase_service:
     path: ../../firebase_service
   firebase_auth: ^5.1.2
+  local_storage:
+    path: ../../local_storage
 
 dev_dependencies:
   flutter_test:

@@ -1,10 +1,9 @@
 library firebase_service;
 
 
-export 'src/firebase_const_key/firebase_const.dart';
 export 'package:firebase_database/firebase_database.dart';
 
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart' ;
 import 'package:firebase_service/src/create_database/create_db.dart';
 import 'package:firebase_service/src/firebase_options.dart';
 
@@ -12,7 +11,6 @@ import 'package:firebase_service/src/firebase_options.dart';
 ///call FirebaseService.init(); to initialize the firebase
 class FirebaseService {
   static final FirebaseService _instance = FirebaseService._internal();
-
   factory FirebaseService() {
     return _instance;
   }

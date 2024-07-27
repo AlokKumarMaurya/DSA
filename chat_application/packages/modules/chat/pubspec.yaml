@@ -17,6 +17,10 @@ dependencies:
     path: ../../custom_widgets
   firebase_service:
     path: ../../firebase_service
+  auth:
+    path: ../auth
+  local_storage:
+    path: ../../local_storage
 
 dev_dependencies:
   flutter_test:
