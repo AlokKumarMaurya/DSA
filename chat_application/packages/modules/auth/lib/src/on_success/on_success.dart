@@ -1,9 +1,7 @@
-import 'dart:math';
 
 import 'package:auth/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_service/firebase_service.dart';
-import 'package:local_storage/get_storage/get_storage.dart';
 import 'package:network_service/network_service.dart';
 
 class OnAuthSuccess {
