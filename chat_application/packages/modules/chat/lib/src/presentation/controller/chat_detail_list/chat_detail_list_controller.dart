@@ -1,3 +1,4 @@
+import 'package:auth/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:local_storage/get_storage/get_storage.dart';
 import 'package:network_service/network_service.dart';
@@ -21,13 +22,16 @@ class ChatDetailListController extends GetxController {
     var args = Get.arguments;
     if (args != null) {
       _chatDetailListArgs = args;
-      getChatDetailList(index: _chatDetailListArgs!.index);
+      getChatDetailList();
+      getMessageStream();
     }
   }
 
-  Future<void> getChatDetailList({required int index}) async {
+  Future<void> getChatDetailList() async {
     return await _chatUseCase
-        .getChatDetailList(index: index, userId: AppLocalStorage().getUserId())
+        .getChatDetailList(
+            chatId: _chatDetailListArgs!.chatId,
+            userId: AppLocalStorage().getUserId())
         .then(
       (value) {
         messages = value.messages;
@@ -36,21 +40,34 @@ class ChatDetailListController extends GetxController {
       },
     );
   }
+  
+  Future<void> getMessageStream() async {
+        (await _chatUseCase
+        .getMessagesStream(
+            chatId: _chatDetailListArgs!.chatId,
+            userId: AppLocalStorage().getUserId())).listen((event) {
+              getChatDetailList();
+            },);
+  }
 
   Future<void> sendMessage() async {
     if (messageTextEditingController.text.isEmpty) return;
     await _chatUseCase.sendMessage(
         message: messageTextEditingController.text,
-        chatId: Get.arguments,
-        userId: AppLocalStorage().getUserId(),
-    receiverId:_chatDetailListArgs!.senderDetail.phoneNumber);
-    getChatDetailList(index: Get.arguments);
+        chatId: _chatDetailListArgs!.chatId,
+        userId: FirebaseAuth.instance.currentUser!.uid,
+        receiverId: _chatDetailListArgs!.senderDetail.id.toString());
+    getChatDetailList();
   }
 }
 
 class ChatDetailListArgs {
-  final int index;
+  final String chatId;
   final SenderDetail senderDetail;
+  final SenderDetail receiverDetail;
 
-  ChatDetailListArgs({required this.index, required this.senderDetail});
+  ChatDetailListArgs(
+      {required this.chatId,
+      required this.senderDetail,
+      required this.receiverDetail});
 }

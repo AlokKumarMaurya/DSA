@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 class AppScaffold extends StatelessWidget {
   final bool isLoading;
 
-  final Widget widget;
+  final Widget child;
 
-  const AppScaffold({super.key, required this.isLoading, required this.widget});
+  const AppScaffold({super.key, required this.isLoading, required this.child});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        widget,
+        child,
         isLoading
             ? const Center(
                 child: CircularProgressIndicator(),

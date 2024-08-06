@@ -13,7 +13,20 @@
           "package_name": "com.alok.chat.chat_application"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "875676004794-gu638oe5svqp12q9srpo6ucm5vdtaebv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alok.chat.chat_application",
+            "certificate_hash": "5b71ee4601cbad4f600803da0c1998550b3841ba"
+          }
+        },
+        {
+          "client_id": "875676004794-ar6atam9158413mfvdhmrqt21bnrac8l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBkx1pLn4lNGWBq5mL97ycb_rqtmAYbe1o"
@@ -21,7 +34,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875676004794-ar6atam9158413mfvdhmrqt21bnrac8l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "875676004794-2j0aga5uqerti965ss4ps7bccvkonopo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.alok.chat.chatApplication"
+              }
+            }
+          ]
         }
       }
     }

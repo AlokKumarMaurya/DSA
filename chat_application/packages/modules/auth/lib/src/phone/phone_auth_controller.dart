@@ -8,15 +8,20 @@ import 'package:network_service/network_service.dart';
 
 class PhoneAuthController extends GetxController {
   String smsCode = "";
+  bool isLoading = false;
+  bool isOtpSend=false;
 
   TextEditingController phoneNumberTextEditingController =
       TextEditingController();
   TextEditingController otpTextEditingController = TextEditingController();
 
   void sendOtp({required String phoneNumber}) async {
+    isLoading = true;
+    update();
     FirebaseAuth auth = FirebaseAuth.instance;
 
-    await FirebaseAuth.instance.verifyPhoneNumber(
+    await FirebaseAuth.instance
+        .verifyPhoneNumber(
       phoneNumber: phoneNumber,
       verificationCompleted: (PhoneAuthCredential credential) async {
         log("verificationCompleted");
@@ -35,31 +40,34 @@ class PhoneAuthController extends GetxController {
         }
       },
       codeSent: (String verificationId, int? resendToken) async {
-        // Update the UI - wait for the user to enter the SMS code
         this.verificationId = verificationId;
-
-        // Create a PhoneAuthCredential with the code
-        // PhoneAuthCredential credential = PhoneAuthProvider.credential(
-        //     verificationId: verificationId, smsCode: "000000");
-        //
-        // // Sign the user in (or link) with the credential
-        // print((await auth.signInWithCredential(credential)).user!.phoneNumber);
         log("codeSent");
+        isOtpSend=true;
+        isLoading = false;
+        update();
       },
       codeAutoRetrievalTimeout: (String verificationId) {
         log("codeAutoRetrievalTimeout");
       },
-    );
+    )
+        .catchError((val) {
+      isLoading = false;
+      update();
+    });
   }
 
   String verificationId = "";
 
   verify(String sms) async {
+    isLoading=true;
+    update();
     FirebaseAuth auth = FirebaseAuth.instance;
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationId, smsCode: sms);
     await auth.signInWithCredential(credential).then(
       (value) {
+        isLoading=false;
+        update();
         log("BRO DONE 11111111");
         log(value.user!.phoneNumber.toString());
         AppLocalStorage().setLoginStatus(isLoggedIn: true);

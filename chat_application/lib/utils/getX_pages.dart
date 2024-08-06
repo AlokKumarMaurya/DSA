@@ -12,7 +12,7 @@ class GetXPages {
   ];
 
   static String initialRoute() {
-    // return AdminRoutes.adminPages.first.name;
+    // return AuthRoutes.authPages[1].name;
     if (AppLocalStorage().isLoggedIn()) {
       return ChatRoute.chatPage.first.name;
     }

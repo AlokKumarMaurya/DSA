@@ -16,7 +16,7 @@ class ChatDetailListView extends StatelessWidget {
           body: RefreshIndicator(
             triggerMode: RefreshIndicatorTriggerMode.anywhere,
             onRefresh: () async {
-              await controller.getChatDetailList(index: 1);
+              await controller.getChatDetailList();
             },
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18.0),

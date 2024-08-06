@@ -13,6 +13,13 @@ dependencies:
   cloud_firestore: ^5.1.0
   flutter:
     sdk: flutter
+  firebase_messaging: ^15.0.3
+  flutter_local_notifications: ^17.2.1+2
+  local_storage:
+    path: ../local_storage
+  network_service:
+    path: ../network_service
+  firebase_auth: ^5.1.3
 
 dev_dependencies:
   flutter_test:

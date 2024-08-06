@@ -1,4 +1,3 @@
-
 import 'package:get_storage/get_storage.dart';
 import 'package:local_storage/get_storage/get_storage_key.dart';
 
@@ -26,11 +25,19 @@ class AppLocalStorage {
     _box.erase();
   }
 
- String getUserId() {
-    return _box.read(GetStorageKey.userId)??"";
- }
+  String getUserId() {
+    return _box.read(GetStorageKey.userId) ?? "";
+  }
 
- void setUserId({required String userId}){
+  void setUserId({required String userId}) {
     _box.write(GetStorageKey.userId, userId);
- }
+  }
+
+  void saveFcmToken({required String token}) {
+    _box.write(GetStorageKey.fcmToken, token);
+  }
+
+  String getFcmToken() {
+    return _box.read(GetStorageKey.fcmToken) ?? "";
+  }
 }
