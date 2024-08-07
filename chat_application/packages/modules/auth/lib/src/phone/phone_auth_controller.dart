@@ -9,7 +9,7 @@ import 'package:network_service/network_service.dart';
 class PhoneAuthController extends GetxController {
   String smsCode = "";
   bool isLoading = false;
-  bool isOtpSend=false;
+  bool isOtpSend = false;
 
   TextEditingController phoneNumberTextEditingController =
       TextEditingController();
@@ -42,7 +42,7 @@ class PhoneAuthController extends GetxController {
       codeSent: (String verificationId, int? resendToken) async {
         this.verificationId = verificationId;
         log("codeSent");
-        isOtpSend=true;
+        isOtpSend = true;
         isLoading = false;
         update();
       },
@@ -59,14 +59,14 @@ class PhoneAuthController extends GetxController {
   String verificationId = "";
 
   verify(String sms) async {
-    isLoading=true;
+    isLoading = true;
     update();
     FirebaseAuth auth = FirebaseAuth.instance;
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationId, smsCode: sms);
     await auth.signInWithCredential(credential).then(
       (value) {
-        isLoading=false;
+        isLoading = false;
         update();
         log("BRO DONE 11111111");
         log(value.user!.phoneNumber.toString());

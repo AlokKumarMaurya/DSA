@@ -50,6 +50,7 @@ class ChatListController extends GetxController {
     if(!res){
       Get.snackbar("Error", "Contact does not exist");
     }
+    getChatList();
     isLoading=false;
     update();
   }

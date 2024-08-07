@@ -40,14 +40,16 @@ class ChatDetailListController extends GetxController {
       },
     );
   }
-  
+
   Future<void> getMessageStream() async {
-        (await _chatUseCase
-        .getMessagesStream(
+    (await _chatUseCase.getMessagesStream(
             chatId: _chatDetailListArgs!.chatId,
-            userId: AppLocalStorage().getUserId())).listen((event) {
-              getChatDetailList();
-            },);
+            userId: AppLocalStorage().getUserId()))
+        .listen(
+      (event) {
+        getChatDetailList();
+      },
+    );
   }
 
   Future<void> sendMessage() async {
